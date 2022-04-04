@@ -41,7 +41,7 @@ namespace PPT에서_가사_뽑아내는_매크로
         [STAThread]
         static void Main(string[] args)
         {
-            Console.Write("\n\t특정 폴더에 담긴 ppt파일들을 불러와\n\ttxt파일로 추출합니다.\n\n\n\n\n\n\n\n\n");
+            Console.Write("\n\t특정 폴더에 담긴 ppt파일들을 불러와\n\ttxt파일로 추출합니다.\n\n\t사용방법 : ppt파일이 들어있는 폴더를 선택해주세요.\n\n\n\n\n\n\n");
             PrintContribute();
 
             Application app = new Application();
