@@ -10,11 +10,40 @@ using System.Diagnostics;
 
 namespace PPT에서_가사_뽑아내는_매크로
 {
+    class Contribute {
+        public String title;
+        public String person;
+        public String description;
+    }
+
     class Program
     {
+        static void PrintContribute()
+        {
+            List<Contribute> contributes = new List<Contribute>(10);
+            contributes.Add(new Contribute()
+            {
+                title = "Programmer",
+                person = "백성수",
+                description = "프로그램 설계 및 제작"
+            });
+            contributes.Add(new Contribute()
+            {
+                title = "Icon Designer",
+                person = "백지원",
+                description = "아이콘 제작"
+            });
+
+            foreach (Contribute c in contributes)
+                Console.Write("{0} : {1}\n{2}\n\n",c.title,c.person,c.description);
+        }
+
         [STAThread]
         static void Main(string[] args)
         {
+            Console.Write("\n\t특정 폴더에 담긴 ppt파일들을 불러와\n\ttxt파일로 추출합니다.\n\n\n\n\n\n\n\n\n");
+            PrintContribute();
+
             Application app = new Application();
 
             String path;
