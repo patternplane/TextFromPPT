@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32228.343
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PPT에서 가사 뽑아내는 매크로", "PPT에서 가사 뽑아내는 매크로\PPT에서 가사 뽑아내는 매크로.csproj", "{F3CEEFC6-F88C-45E7-8B6A-B461B3A8708E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F3CEEFC6-F88C-45E7-8B6A-B461B3A8708E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3CEEFC6-F88C-45E7-8B6A-B461B3A8708E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3CEEFC6-F88C-45E7-8B6A-B461B3A8708E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3CEEFC6-F88C-45E7-8B6A-B461B3A8708E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BF6A11B2-14AA-47B0-BA6F-EA77EA4708FE}
+	EndGlobalSection
+EndGlobal
