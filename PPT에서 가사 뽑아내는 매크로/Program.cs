@@ -21,7 +21,9 @@ namespace PPT에서_가사_뽑아내는_매크로
 
             Microsoft.Office.Core.FileDialog fd =
             app.FileDialog[Microsoft.Office.Core.MsoFileDialogType.msoFileDialogFolderPicker];
+            fd.InitialFileName = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             fd.Show();
+
             path = fd.SelectedItems.Item(1);
 
             DirectoryInfo id = new DirectoryInfo(path);
