@@ -38,6 +38,47 @@ namespace PPT에서_가사_뽑아내는_매크로
                 Console.Write("{0} : {1}\n{2}\n\n",c.title,c.person,c.description);
         }
 
+        /// <summary>
+        /// 잘못된 개행문자를 윈도우 표준에 맞게 바꿔줍니다.
+        /// </summary>
+        /// <param name="original">
+        /// 원본 문자열
+        /// </param>
+        /// <returns>
+        /// 고쳐진 문자열
+        /// </returns>
+        static string makeCorrectNewline(string original)
+        {
+            StringBuilder str = new StringBuilder(original);
+            for (int i = 0, j = 0; i < original.Length; i++, j++)
+            {
+                if (original[i] == '\r')
+                {
+                    if ((i + 1 == original.Length) || (original[i + 1] != '\n'))
+                    {
+                        str = str.Insert(j + 1, '\n');
+                        j++;
+                    }
+                    else
+                    {
+                        i++;
+                        j++;
+                    }
+                }
+                else if (original[i] == '\n')
+                {
+                    str = str.Insert(j, '\r');
+                    j++;
+                }
+                else if (original[i] == '\v')
+                {
+                    str = str.Replace("\v", "\r\n", j, 1);
+                    j++;
+                }
+            }
+            return str.ToString();
+        }
+
         [STAThread]
         static void Main(string[] args)
         {
@@ -62,6 +103,7 @@ namespace PPT에서_가사_뽑아내는_매크로
 
             StringBuilder allLiric = new StringBuilder("");
 
+            Console.Write("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
             foreach (FileInfo file in id.GetFiles())
             {
                 if (((file.Extension.ToLower().CompareTo(".ppt") == 0)
@@ -69,21 +111,26 @@ namespace PPT에서_가사_뽑아내는_매크로
                     || (file.Extension.ToLower().CompareTo(".pptm") == 0))
                     && (file.Name[0] != '~'))
                 {
-                    Presentation ppt = app.Presentations.Open(file.FullName);
+                    Console.WriteLine("파일 {0}을 여는중...",file.Name);
+                    Presentation ppt = app.Presentations.Open(file.FullName,WithWindow:Microsoft.Office.Core.MsoTriState.msoFalse);
 
                     allLiric.Append(file.Name);
                     allLiric.Append("\r\n");
                     foreach (Slide s in ppt.Slides)
+                    {
+                        Console.WriteLine("{0} 처리중 : {1}번째 슬라이드",file.Name,s.SlideIndex);
                         foreach (Shape sh in s.Shapes)
                             if (sh.HasTextFrame != Microsoft.Office.Core.MsoTriState.msoFalse)
                             {
-                                allLiric.Append(sh.TextFrame.TextRange.Text.Replace("\v","\r\n"));
+                                allLiric.Append(makeCorrectNewline(sh.TextFrame.TextRange.Text));
                                 allLiric.Append("\r\n");
                             }
+                    }
 
                     allLiric.Append("∂\r\n");
 
                     ppt.Close();
+                    Console.WriteLine("");
                 }
             }
 
