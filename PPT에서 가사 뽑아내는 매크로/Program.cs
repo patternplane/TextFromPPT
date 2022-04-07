@@ -64,9 +64,10 @@ namespace PPT에서_가사_뽑아내는_매크로
 
             foreach (FileInfo file in id.GetFiles())
             {
-                if ((file.Extension.ToLower().CompareTo(".ppt") == 0)
+                if (((file.Extension.ToLower().CompareTo(".ppt") == 0)
                     || (file.Extension.ToLower().CompareTo(".pptx") == 0)
                     || (file.Extension.ToLower().CompareTo(".pptm") == 0))
+                    && (file.Name[0] != '~'))
                 {
                     Presentation ppt = app.Presentations.Open(file.FullName);
 
