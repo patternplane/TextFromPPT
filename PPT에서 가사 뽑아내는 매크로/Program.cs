@@ -71,15 +71,16 @@ namespace PPT에서_가사_뽑아내는_매크로
                     Presentation ppt = app.Presentations.Open(file.FullName);
 
                     allLiric.Append(file.Name);
+                    allLiric.Append("\r\n");
                     foreach (Slide s in ppt.Slides)
                         foreach (Shape sh in s.Shapes)
                             if (sh.HasTextFrame != Microsoft.Office.Core.MsoTriState.msoFalse)
                             {
-                                allLiric.Append(sh.TextFrame.TextRange.Text);
-                                allLiric.Append("\n");
+                                allLiric.Append(sh.TextFrame.TextRange.Text.Replace("\v","\r\n"));
+                                allLiric.Append("\r\n");
                             }
 
-                    allLiric.Append("∂\n");
+                    allLiric.Append("∂\r\n");
 
                     ppt.Close();
                 }
